@@ -11,7 +11,7 @@ arch ?= x86_64
 ifeq ($(arch), arm64)
 instance_type ?= a1.large
 else
-instance_type ?= m4.large
+instance_type ?= m5.large
 endif
 
 T_RED := \e[0;31m
@@ -20,7 +20,7 @@ T_YELLOW := \e[0;33m
 T_RESET := \e[0m
 
 .PHONY: all
-all: 1.10 1.11 1.12 1.13
+all: 1.10 1.11 1.12 1.13 1.14
 
 .PHONY: validate
 validate:
@@ -46,3 +46,7 @@ k8s: validate
 .PHONY: 1.13
 1.13:
 	$(MAKE) k8s kubernetes_version=1.13.7 kubernetes_build_date=2019-06-11
+
+.PHONY: 1.14
+1.14:
+	$(MAKE) k8s kubernetes_version=1.14.6 kubernetes_build_date=2019-08-22
